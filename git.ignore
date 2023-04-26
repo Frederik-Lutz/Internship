@@ -1,0 +1,9 @@
+### list of non used git###
+
+
+.snakemake
+03-data
+04-analysis
+conda 
+snakemake_tmp
+tmp
