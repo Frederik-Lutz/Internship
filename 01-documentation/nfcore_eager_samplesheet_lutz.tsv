@@ -1,0 +1,7 @@
+Sample_Name	Library_ID	Lane	Colour_Chemistry	SeqType	Organism	Strandedness	UDG_Treatment	R1	R2	BAM
+ERS4181284	ERR3761411	1	4	PE	Dummy	double	none	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR3761411_1.fastq.gz	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR3761411_2.fastq.gz	NA
+SRS5300669	SRR12557705	1	4	PE	Dummy	double	none	/mnt/archgen/users/lutz/internship/03-data/raw_data/SRR12557705_1.fastq.gz	/mnt/archgen/users/lutz/internship/03-data/raw_data/SRR12557705_2.fastq.gz	NA
+ERS7649025	ERR6862851	1	4	PE	Dummy	double	none	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR6862851_1.fastq.gz	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR6862851_2.fastq.gz	NA
+ERS7649026	ERR6862852	1	4	PE	Dummy	double	none	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR6862852_1.fastq.gz	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR6862852_2.fastq.gz	NA
+ERS11453812	ERR9465627	1	2	PE	Dummy	double	none	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR9465627_1.fastq.gz	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR9465627_2.fastq.gz	NA
+ERS11453813	ERR9465628	1	2	PE	Dummy	double	none	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR9465628_1.fastq.gz	/mnt/archgen/users/lutz/internship/03-data/raw_data/ERR9465628_2.fastq.gz	NA
