@@ -1,0 +1,14 @@
+Apr-14 15:06:59.927 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/eager -r 2.4.6 -profile eva,archgen --input 01-documentation/nfcore_eager_samplesheet_lutz.tsv --fasta /mnt/archgen/Reference_Genomes/Human/hs37d5/hs37d5.fa --fasta_index /mnt/archgen/Reference_Genomes/Human/hs37d5/hs37d5.fa.fai --bwa_index /mnt/archgen/Reference_Genomes/Human/hs37d5 --seq_dict /mnt/archgen/Reference_Genomes/Human/hs37d5/hs37d5.dict --skip_preseq --skip_deduplication --skip_damage_calculation --skip_qualimap --complexity_filter_poly_g --skip_collapse clear
+Apr-14 15:06:59.987 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.10.6
+Apr-14 15:07:00.008 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/frederik_lutz/.nextflow/plugins; core-plugins: nf-amazon@1.11.3,nf-azure@0.14.2,nf-codecommit@0.1.2,nf-console@1.0.4,nf-ga4gh@1.0.4,nf-google@1.4.5,nf-tower@1.5.6,nf-wave@0.5.3
+Apr-14 15:07:00.032 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-14 15:07:00.033 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-14 15:07:00.037 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Apr-14 15:07:00.048 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-14 15:07:00.061 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/frederik_lutz/.nextflow/scm
+Apr-14 15:07:01.150 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/frederik_lutz/.nextflow/assets/nf-core/eager/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/eager.git
+Apr-14 15:07:01.168 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Apr-14 15:07:01.176 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/frederik_lutz/.nextflow/assets/nf-core/eager/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/eager.git
+Apr-14 15:07:02.564 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/frederik_lutz/.nextflow/assets/nf-core/eager/nextflow.config
+Apr-14 15:07:02.566 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/frederik_lutz/.nextflow/assets/nf-core/eager/nextflow.config
+Apr-14 15:07:02.575 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `eva,archgen`
