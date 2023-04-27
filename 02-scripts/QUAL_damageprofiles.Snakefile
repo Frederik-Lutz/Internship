@@ -12,6 +12,8 @@
 
 import os
 
+import pandas as pd
+
 if not os.path.isdir("snakemake_tmp"):
     os.makedirs("snakemake_tmp")
 
@@ -31,7 +33,7 @@ wildcard_constraints:
 
 rule all:
     input:
-        expand("04-analysis/damageprofiles/{sample}/5p_freq_misincorporations.txt", sample=SAMPLES)
+        "05-results/QUAL_damageprofile_Pcopri_Smaltophilia.tsv"
 
 #### Prepare sequencing data ###################################################
 
@@ -195,5 +197,19 @@ rule damageprofiler:
         damageprofiler -i {input.bam} \
             -o {params.outdir}
         """
+
+rule summarise_damageprofiler:
+    input:
+        expand("04-analysis/damageprofiles/{sample}/5p_freq_misincorporations.txt", sample=SAMPLES)
+    output:
+        "05-results/QUAL_damageprofile_Pcopri_Smaltophilia.tsv"
+    message: "Summarise the substitution frequency at the 5' end"
+    run:
+        damage = pd.concat([pd.read_csv(fn, sep="\t", skiprows=3) \
+                                .assign(sample=os.path.basename(os.path.dirname(fn)))
+                            for fn in input])
+        damage['genome'] = ["Pcopri" if s[:3] == "SRS" or s[:6] == "ERS418" else "Smaltophilia" for s in damage['sample'].values]
+        damage.iloc[:, [-2, -1] + list(range(0, 13))] \
+            .to_csv(output[0], sep="\t", index=False, float_format="%.4f")
 
 ################################################################################
