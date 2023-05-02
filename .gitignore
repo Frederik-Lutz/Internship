@@ -5,3 +5,6 @@ conda
 snakemake_tmp
 tmp
 *_Zape*.Snakefile
+.nextflow.log
+.nextflow.log.1
+conda_environment.yml
