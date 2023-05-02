@@ -1,0 +1,7 @@
+.snakemake
+03-data
+04-analysis
+conda
+snakemake_tmp
+tmp
+*_Zape*.Snakefile
