@@ -1,0 +1,97 @@
+---
+title: "Report"
+author: "Frederik Lutz"
+date: '2023-05-08'
+output:
+  html_document:
+    code_folding: hide
+  pdf_document: default
+bibliography: citations.bib
+---
+```{r include=FALSE}
+library(ape)
+library(phangorn)
+library(ggtree)
+library(tidyverse)
+library(magick)
+library(imager)
+```
+
+
+# Introduction 
+Phylogenetic trees are tools to assess the evolutionary relationships between organisms. This report compares the modeled trees of the bionformatic tools dRep and PhyloPhlan3 based on the genome of Treponema Succinifaciens as database.
+
+
+# Methods
+The data was prepared by running dRrep (version: 3.4.3)[@olm_drep:_2017] on it, which identifies and removes duplicate genomes and also generates the primary cluster dendogram based on Average Nucleotide Identity. This leads to better downstream processing due to less computational time needed. The resulting table contains all represented gene clusters, allowing one to use PhyloPhlAn3 (version: 3.0.67)[@segata_phylophlan_2013]. Due to on an additional list of marker genes for Treponemas Succinifaciens the program builds the best suited phylogenetic tree for the compilation of the previously reconstructed-/ SGB- and reference genomes. Additionally a R script can be used to increase the accuracy of the classification by creating genetic distances using different models as well as "Neighbour-joining" and creating another tree based on preselected high abundant marker genes (ammonium transporter, ABC transporter related protein.       
+
+
+# Results
+
+```{r pressure, echo=FALSE, out.width="80%"}
+knitr::include_graphics("Primary_clustering_dendrogram.jpg")
+
+```
+
+
+
+The dendrogram by dRep clusters the samples into three major groups.
+
+```{r echo=FALSE}
+aln_fns <- list.files(pattern = ".aln")
+
+alns <- map(aln_fns, function(fn) read.FASTA(fn))
+names(alns) <- str_replace(aln_fns, ".aln", "")
+
+aln_lengths <- map_int(alns, function(a) length(a[[1]]))
+
+#### Calculating genetic distances #############################################
+
+distance_measures <- c("N", "TS", "TV", "JC69", "K80", "F81", "F84", "TN93")
+
+gene_dists <- map(alns, function(a) {
+  dists <- map(distance_measures, function(d) {
+    dist.dna(a, model = d, pairwise.deletion = T)
+  })
+  names(dists) <- distance_measures
+  return(dists)
+})
+
+print(njs(gene_dists[["ENA-AEB13176-AEB13176.1"]][["TN93"]]))
+str(njs(gene_dists[["ENA-AEB13176-AEB13176.1"]][["TN93"]]))
+
+ggtree(njs(gene_dists[["ENA-AEB13176-AEB13176.1"]][["TN93"]]), aes(x, y)) +
+geom_tree() +
+geom_tiplab() +
+scale_x_continuous(limits = c(NA, 4)) +
+theme_tree()
+```
+
+
+
+
+
+
+The tree using the R script distancing based on the ammonium transporter gene largely distinguishes betweeen two clusters of which one is further subdivided in two distinct groups including three taxa.
+
+```{r echo=FALSE}
+## Alignment: ENA-AEB13835-AEB13835.1
+
+ggtree(njs(gene_dists[["ENA-AEB13835-AEB13835.1"]][["TN93"]]), aes(x, y)) +
+geom_tree() +
+geom_tiplab() +
+scale_x_continuous(limits = c(NA, 3)) +
+theme_tree()
+```
+
+
+
+
+The tree using the R script distancing based on the ABC transporter related protein divides the tree in two larger clusters of which one is subdivided into two groups containing two taxa.
+
+
+
+# Discussion
+All three trees cluster the Schirmer, LeChatelier, Obregon, GCA, BritoIL_2016__M2.40.ST__bin.49 samples together. ZellerG-, Smits- and FenQ- samples match the classification in the MASH and first R- script generated tree, as well as CM_madagaskar-, -Britol and Rampelli samples. The results show that by determining the genetic distance by modelling with R, the phylogenetic tree get mor precise.   
+
+# References
