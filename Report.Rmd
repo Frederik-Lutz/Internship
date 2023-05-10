@@ -3,9 +3,9 @@ title: "Report"
 author: "Frederik Lutz"
 date: '2023-05-08'
 output:
+  pdf_document: default
   html_document:
     code_folding: hide
-  pdf_document: default
 bibliography: citations.bib
 ---
 ```{r include=FALSE}
@@ -27,6 +27,10 @@ The data was prepared by running dRrep (version: 3.4.3)[@olm_drep:_2017] on it, 
 
 
 # Results
+
+The PhyloPhlan Pipeline did not work and did not deliver a tree
+
+
 
 ```{r pressure, echo=FALSE, out.width="80%"}
 knitr::include_graphics("Primary_clustering_dendrogram.jpg")
