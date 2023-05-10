@@ -27,7 +27,7 @@ wildcard_constraints:
 rule all:
     input:
         expand("04-analysis/refgenome_reconst/{sample}.freebayes_loose.fasta.gz", sample=SAMPLES),
-        expand("04-analysis/refgenome_reconst/{sample}.freebayes_conserv.fasta", sample=SAMPLES),
+        expand("04-analysis/refgenome_reconst/{sample}.freebayes_conserv.fasta", sample=[s for s in SAMPLES if s not in ['ERS11453815', 'ERS11453816']]),
         expand("04-analysis/refgenome_reconst/{sample}.majority.vcf.gz", sample=SAMPLES)
 
 #### Prepare reference for genotyping with freeBayes ###########################

@@ -3,11 +3,13 @@
 # Part: Geneome Reconstruction
 # Step: Reconstruction 
 #
+### NOT COMPLETE########
+#
 # Dependent on:
 #   - PREP_remove_hostDNA.Snakefile
 #   - COMP_Kraken2_Bracken.Snakefile
 #
-# Alex Huebner, 25/04/23
+# Frederik Lutz
 ################################################################################
 
 import os
